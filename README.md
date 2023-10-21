@@ -1,26 +1,25 @@
-#  Как работать с репозиторием финального задания
+# Kittygram
 
-## Что нужно сделать
+### Небольшая социальная сеть, в которой можно делиться фотографиями котиков и рассказывать об их достижениях
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+## Технологии:
+* Python
+* Django
+* Nginx
+* Docker
+* Gunicorn
 
-## Как проверить работу с помощью автотестов
+## Запуск проекта:
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
+- Скопировать репозиторий `git clone https://github.com/nesterovv89/kittygram_final.git`
+- В корне проекта создать файл .env для хранения секретных данных, заполнить согласно образца .env.example
+- Выполнить команду `docker compose -f docker-compose.production.yml up -d`
+- Провести сбор статики и выполнить миграции:
+`docker compose -f docker-compose.production.yml exec backend python manage.py migrate
+docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+docker compose -f docker-compose.production.yml exec backend cp -r /app/static_backend/. /backend_static/static/`
+-Проект будет доступен на сервере, который вы указали в файле .env
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+В данный момент проект доступен по этой [ссылк](https://kittygramnesterov.ddns.net)
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
-
-## Чек-лист для проверки перед отправкой задания
-
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+Автор [Павел Нестеров](https://github.com/nesterovv89)  
