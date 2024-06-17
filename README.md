@@ -37,7 +37,6 @@ sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/sta
 
 [![Main kittygram workflow](https://github.com/nesterovv89/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/nesterovv89/kittygram_final/actions/workflows/main.yml)
 
-В данный момент проект доступен по этой [ссылке](https://kittygramnesterov.ddns.net)
 
 Автор [Павел Нестеров](https://github.com/nesterovv89)  
 
